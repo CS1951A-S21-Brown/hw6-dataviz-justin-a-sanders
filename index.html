@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8">
-        <title>Assignment 6 &laquo; Data Visualization Dashboard&raquo;</title>
+        <title>&laquo; Soccer Visualization&raquo;</title>
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="main.css"/>
         <!--Feel free to add more CSS files as needed-->
@@ -10,17 +10,68 @@
     </head>
 <body>
     <div class="header">
-        <h3>Assignment 6 &laquo; Data Visualization Dashboard &raquo;</h3>
+        <h3>&laquo; Soccer Visualization Dashboard &raquo;</h3>
     </div>
     <!--  We included a basic HTML structure for the 3 graphs here. Feel free to change this if you'd like  -->
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-1">
             <div id="graph1"></div>
-            <div id="graph2"></div><br/>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-2">
+            <div id="title"></div>
+            <div id="buttons">
+                <button type="button" class="btn btn-info" onclick="setData(0)">All time</button>
+                <button type="button" class="btn btn-info" onclick="setData(1)">Modern (Since 2000)</button>
+            </div>
+            <div id="graph2"></div>
+        </div>
+        <div class="col-lg-3">
             <div id="graph3"></div>
         </div>
+    </div>
+    <div class = "text">
+        <h3> Written Questions </h3>
+        <p>
+            1. The first graph answers the bosses question on the number of football matches each year by showing a bar chart of the number of matches played
+            in each year between 1872 (the start of this dataset) and today. There are also tooltips that appear when you mouse over each bar if he is interested in a
+            specific year. The second graph ansers the second question of who the teams with the top win percentage are. There were some relatively small (eg. Jersey) teams
+            and also a few controversial ones (eg. North Korea) that happened to have very high win rates on the basis of not playing many games. Thus, I filtered out all
+            nations with less than 100 data point. Additionally, there is a toggle to see data from all time or just since 2000. Finally, I answered the third question of which
+            trams I would predict to do best in the 2022 world cup by plotting a scatter plot of two measures of performance over the last two world cups - average goal diffferential
+            and total number of games won. Teams closer towards the top right corner are the ones we expect to perform the best in 2022, and looking at the teams this seems pretty
+            accurate (Although England arent even in the top ten, despite being the clear favorites, so it's not perfect. Footballs coming home.)
+        </p>
+        <p>
+            2. One useful feature of d3 is it's interactivity - you can make much more engaging and dynamic plots in d3 than you can in matplotlib or excel. A second is the
+            ease of use of some of it's features. While some aspects d3 are more difficult than alternatives (as I mention in part 3.), other components are well documented and
+            very easy to use. For example, adding tooltips to my viz was very simple, and I think they contribute a lot to improving it. Finally, once the graphs were made the
+            flexibility of working with javascript/html made it much easier to customize the visualization and get everything looking the way you want it than it is in other
+            graphing softwares.
+        </p>
+        <p>
+            3. One reason that d3 isn't the best tool is that it takes a lot of effort to even make simple visualizations. My first graph - a simple bar chart - took me more than an
+            hour to create with d3, but would have taken less than five minutes to make with matplotlib in python. A second reason is that the resulting visualizations are fairly
+            fragile. A .png file pf a graph from python or excel is going to look the same to everyone, but a d3 visualization might look different depending on the viewers browser,
+            screen size, or whether theyve resized their window (as I frustratingly discovered while working on this project). Finally, d3 visualizations may not be very performant if
+            you are wanting to plot large amounts of data. If I wanted to plot a scatter plot of a million points, having that many svg elements on a single page will likely start to
+            cause some issues.
+        </p>
+        <p>
+            4. I think that a strong point about my dashboard is that the results can all be understood without colour. This way, it's more accessable to people with colourblindness as
+            all of the important information presented is readable even in black and white. I think users who would have more difficulty with my dashboard are those who are using assistive screen readers.
+            While my graphs are made of SVG elements as the betterment article reccomended, two of my graphs don't have each data point explicitly labeled. The main limitation for this was simply
+            my familiarity with D# - I just couldn't get the labels to work properly. Additionally, my viz uses hover over tooltips to present some of the information, despite the betterment article
+            explicitly saying to avoid them. An additional action I could take to make my vz more accessable would be to present the information in the tooltips in an alternative way, but for this
+            assignment we were required to incorporate tooltips.
+        </p>
+        <p>
+            5. When laying out my dashboard on paper, I could have included more textual components explaining what was shown in the graph and what the key takeaways were to make the viz
+            more accessable to people using assistive technology. If I were producing an actual website I probably would have implemented this, but for this project I felt I should
+            focus on the visualizations themselves, and I also had some technical divviculties with getting the text and the graph divs next to each other without overlapping. Another
+            step where I considered accessibility was choosing colours for the third plot. Initially, I was thinking of going from red to green to represent bad to good teams, but instead
+            I changed it to a colour scale that a website said was more colourblind friendly. Finally, before implementing hover-over information I could have looked for a more accessable alternative.
+            However, I was kept from taking this step by the project requirements which say you need to incorporate tooltips.
+        </p>
     </div>
     <!--Feel free to add more JavaScript files as needed-->
     <script type="text/javascript" src="main.js"></script>
